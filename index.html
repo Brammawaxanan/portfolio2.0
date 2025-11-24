@@ -31,11 +31,19 @@
   <style>
     /* Service Card Custom Styles */
     .service-card {
-      transition: box-shadow 0.3s cubic-bezier(.4, 2, .6, 1), transform 0.3s cubic-bezier(.4, 2, .6, 1);
-      border: none;
-      will-change: box-shadow, transform;
-      background-color: rgba(218, 216, 216, 0.925);
-      /* Gray background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 30px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid rgba(42, 81, 210, 0.15);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
     }
 
     .service-card:hover {
@@ -134,109 +142,551 @@
       font-weight: bold;
     }
 
-    /* Qualification segmented control */
-    #qualification .d-flex .btn-plain {
-      border: 1px solid var(--accent-color) !important;
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-weight: 600;
-      backdrop-filter: saturate(120%);
+    /* Qualification Section Styling */
+    #qualification {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     }
 
-    #qualification .d-flex .btn-plain.active {
-      background: #ffffff !important;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    #qualification .btn-plain {
+      display: flex;
+      align-items: center;
+      padding: 15px 25px !important;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.6) !important;
+      border: 2px solid transparent !important;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
     }
 
-    /* Centered timeline layout */
+    #qualification .btn-plain:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(42, 81, 210, 0.25) !important;
+      background: rgba(42, 81, 210, 0.08) !important;
+      border: 2px solid #2a51d2 !important;
+    }
+
+    #qualification .btn-plain.active {
+      background: linear-gradient(135deg, #2a51d2 0%, #1d3996 100%) !important;
+      color: white !important;
+      box-shadow: 0 12px 35px rgba(42, 81, 210, 0.4) !important;
+      border: 2px solid #2a51d2 !important;
+    }
+
+    #qualification .btn-plain.active i,
+    #qualification .btn-plain.active span {
+      color: white;
+    }
+
     .timeline {
       position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 10px 0 10px 0;
+      margin-left: 0;
+      padding-left: 40px;
     }
 
-    /* vertical line */
     .timeline::before {
-      content: "";
+      content: '';
       position: absolute;
-      left: 50%;
+      left: 12px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--surface-color);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-color), transparent 70%);
-      transform: translateX(-50%);
+      background: linear-gradient(180deg, #2a51d2 0%, rgba(42, 81, 210, 0.3) 100%);
+      animation: timelineGrow 0.8s ease-out forwards;
+    }
+
+    @keyframes timelineGrow {
+      from {
+        height: 0;
+      }
+      to {
+        height: 100%;
+      }
     }
 
     .timeline-item {
       position: relative;
-      padding: 20px 0 40px;
+      margin-bottom: 35px;
+      opacity: 0;
+      animation: slideInLeft 0.6s ease-out forwards;
     }
 
-    /* dot on the center line */
+    .timeline-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .timeline-item:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .timeline-item:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     .timeline-dot {
       position: absolute;
-      left: 50%;
-      top: 10px;
-      transform: translate(-50%, 0);
-      width: 14px;
-      height: 14px;
+      left: -26px;
+      top: 8px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: var(--accent-color);
-      border: 3px solid #ffffff;
+      background: #2a51d2;
+      border: 4px solid #f8f9fa;
       z-index: 2;
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color), transparent 75%);
+      box-shadow: 0 0 0 3px #2a51d2;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: dotPulse 2s ease-in-out infinite;
     }
 
-    /* right side content (title + description) */
-    .timeline-item > div {
-      position: relative;
-      width: 50%;
-      margin-left: 50%;
-      padding-left: 32px;
-    }
-
-    .timeline-item > div h5 {
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
-
-    /* left side date line (use the first muted line as the date label) */
-    .timeline-item > div .text-muted:first-of-type {
-      position: absolute;
-      right: calc(50% + 32px);
-      /* align to the left column */
-      width: 260px;
-      text-align: right;
-      margin: 0;
-      top: 0;
-      transform: translateX(-32px);
-      opacity: .9;
-    }
-
-    /* spacing for items */
-    .timeline-item + .timeline-item {
-      margin-top: 10px;
-    }
-
-    /* Responsive: stack on small screens */
-    @media (max-width: 768px) {
-      .timeline::before { left: 20px; transform: none; }
-      .timeline-dot { left: 20px; transform: translate(-50%, 0); }
-      .timeline-item > div { width: auto; margin-left: 0; padding-left: 50px; }
-      .timeline-item > div .text-muted:first-of-type {
-        position: static;
-        width: auto;
-        text-align: left;
-        transform: none;
-        display: block;
-        margin-bottom: 6px;
+    @keyframes dotPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 3px #2a51d2, 0 0 0 8px rgba(42, 81, 210, 0.3);
       }
+      50% {
+        box-shadow: 0 0 0 3px #2a51d2, 0 0 0 12px rgba(42, 81, 210, 0.1);
+      }
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 3px #2a51d2, 0 0 15px rgba(42, 81, 210, 0.6);
+    }
+
+    .timeline-item h5 {
+      font-size: 1.2rem;
+      color: #2a51d2;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover h5 {
+      color: #1d3996;
+      transform: translateX(5px);
+    }
+
+    .timeline-item .text-muted {
+      font-size: 0.95rem;
+      color: #6c757d !important;
+      font-weight: 500;
+    }
+
+    .timeline-item > div:last-child {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #2a51d2;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .timeline-item:hover > div:last-child {
+      box-shadow: 0 8px 30px rgba(42, 81, 210, 0.2);
+      transform: translateY(-5px);
+      border-left-color: #1d3996;
     }
 
     #workContent .timeline-dot {
       background: #6c757d;
+      box-shadow: 0 0 0 3px #6c757d;
+    }
+
+    #workContent .timeline-dot:hover {
+      box-shadow: 0 0 0 3px #6c757d, 0 0 15px rgba(108, 117, 125, 0.6);
+    }
+
+    #workContent .timeline::before {
+      background: linear-gradient(180deg, #6c757d 0%, rgba(108, 117, 125, 0.3) 100%);
+    }
+
+    #workContent .timeline-item > div:last-child {
+      border-left-color: #6c757d;
+    }
+
+    #workContent .timeline-item:hover > div:last-child {
+      border-left-color: #495057;
+      box-shadow: 0 8px 30px rgba(108, 117, 125, 0.2);
+    }
+
+    /* ===== ABOUT SECTION STYLING ===== */
+    #about {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(42, 81, 210, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    /* Glow squares animation */
+    .glow-circle {
+      position: absolute;
+      border-radius: 20px;
+      border: 3px solid transparent;
+      animation: glow-animation 4s ease-in-out infinite;
+    }
+
+    .glow-1 {
+      width: 92%;
+      height: 92%;
+      border-color: rgba(12, 104, 19, 0.2);
+      animation-delay: 0s;
+    }
+
+    .glow-2 {
+      width: 89%;
+      height: 89%;
+      border-color: rgba(11, 81, 17, 0.05);
+      animation-delay: 0.5s;
+    }
+
+    @keyframes glow-animation {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(42, 81, 210, 0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-info-badge {
+      background: rgba(85, 95, 110, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: white;
+      padding: 22px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      margin-top: 24px;
+      transition: all 0.3s ease;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .profile-info-badge:hover {
+      transform: translateY(-6px);
+      background: rgba(85, 95, 110, 0.9);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-info-badge h4 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+    }
+
+    .profile-info-badge p {
+      margin: 8px 0 0 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .about-content-wrapper {
+      width: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .about-header {
+      margin-bottom: 28px;
+    }
+
+    .about-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2a51d2;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .about-subtitle {
+      font-size: 1.35rem;
+      color: #495057;
+      font-weight: 500;
+      margin: 14px 0 0 0;
+      letter-spacing: 0.2px;
+    }
+
+    .about-description {
+      font-size: 0.98rem;
+      color: #495057;
+      line-height: 1.9;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    /* Info Cards Grid */
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .info-card {
+      display: flex;
+      gap: 16px;
+      padding: 22px 24px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid rgb(42 81 210 / 35%);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(42, 81, 210, 0.12);
+      border-color: rgba(42, 81, 210, 0.25);
+      background: linear-gradient(135deg, rgba(42, 81, 210, 0.03) 0%, rgba(200, 220, 255, 0.05) 100%);
+    }
+
+    .info-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #d9e7ff 0%, #e6efff 100%);
+      border-radius: 14px;
+      flex-shrink: 0;
+      font-size: 1.6rem;
+      color: #2a51d2;
+      transition: all 0.35s ease;
+      box-shadow: 0 4px 12px rgba(42, 81, 210, 0.08);
+    }
+
+    .info-card:hover .info-icon {
+      background: linear-gradient(135deg, #2a51d2 0%, #1d3996 100%);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .info-content {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #2a51d2;
+      margin: 0 0 8px 0;
+      opacity: 0.9;
+    }
+
+    .info-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #272829;
+      margin: 0;
+      letter-spacing: 0.1px;
+      line-height: 1.4;
+    }
+
+    /* About Description Points */
+    .about-points {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .point-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      color: #495057;
+      font-size: 0.97rem;
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .point-item i {
+      color: #2a51d2;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .point-item:hover i {
+      transform: translateX(4px);
+      color: #1d3996;
+    }
+
+    .point-item span {
+      flex: 1;
+    }
+
+    /* Action Buttons */
+    .about-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .about-buttons .btn {
+      padding: 14px 34px;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      letter-spacing: 0.4px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .about-buttons .btn-primary {
+      background: linear-gradient(135deg, #2a51d2 0%, #1d3996 100%);
+      border: none;
+      color: white;
+    }
+
+    .about-buttons .btn-primary:hover {
+      background: linear-gradient(135deg, #1d3996 0%, #152675 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(42, 81, 210, 0.3);
+    }
+
+    .about-buttons .btn-outline-primary {
+      border: 2px solid #2a51d2;
+      color: #2a51d2;
+      background: transparent;
+    }
+
+    .about-buttons .btn-outline-primary:hover {
+      background: #2a51d2;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(42, 81, 210, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+      #about {
+        padding: 60px 0;
+      }
+
+      .about-title {
+        font-size: 2.2rem;
+      }
+
+      .about-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .info-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-buttons {
+        flex-direction: column;
+      }
+
+      .about-buttons .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #about {
+        padding: 50px 0;
+      }
+
+      .about-image-wrapper {
+        max-width: 280px;
+      }
+
+      .about-title {
+        font-size: 1.8rem;
+      }
+
+      .about-subtitle {
+        font-size: 1rem;
+      }
+
+      .profile-info-badge {
+        padding: 14px 18px;
+        margin-top: 20px;
+      }
+
+      .profile-info-badge h4 {
+        font-size: 1.05rem;
+      }
+
+      .info-card {
+        padding: 14px;
+      }
+
+      .info-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+      }
+
+      .about-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
     }
 
     /* Style for custom Swiper arrows */
@@ -264,13 +714,24 @@
       <ul>
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
+        <li><a href="#skills"><i class="bi bi-star navicon"></i><span>Skills</span></a></li>
         <li><a href="#qualification"><i class="bi bi-mortarboard navicon"></i><span>Qualification</span></a></li>
         <li><a href="#projects"><i class="bi bi-images navicon"></i><span>Projects</span></a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-        <li><a href="#testimonials"><i class="bi bi-chat-square-text navicon"></i><span>Testimonials</span></a></li>
+        <li><a href="#certifications"><i class="bi bi-award navicon"></i><span>Certifications</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
       </ul>
     </nav>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+      <input type="checkbox" id="darkModeToggle" class="toggle-checkbox">
+      <label for="darkModeToggle" class="toggle-label">
+        <i class="bi bi-sun toggle-icon"></i>
+        <i class="bi bi-moon toggle-icon"></i>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
 
   </header>
 
@@ -286,7 +747,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-9 text-center">
             <h2>Brammawaxanan Sivanantharajah</h2>
-            <p>I'm <span class="typed" data-typed-items="Designer, Developer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            <p>I'm <span class="typed" data-typed-items="Analyser, Designer, Developer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
             <div class="social-links">
               <a href="https://github.com/Brammawaxanan" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
               <a href="https://wa.me/94761764440" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
@@ -302,54 +763,110 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>I am a Web Designer &amp; Web Developer currently studying Information Technology at SLIIT. Passionate about building innovative and functional web solutions, I am always eager to expand my skills and collaborate on exciting projects.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/profile.jpeg" class="img-fluid" alt="Profile photo of Brammawaxanan" style="border-radius: 10%;">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Web Designer &amp; Web Developer.</h2>
-            <p class="fst-italic py-3">
-              I have expertise in both front-end and back-end technologies such as HTML, CSS, JavaScript, PHP, and MySQL. I also use tools like Figma and MockFlow for web designing, focusing on creating responsive, user-friendly websites. I am constantly exploring new ways to enhance my skills and contribute to innovative web solutions.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>14 July 2000</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+94 761764440</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Trincomalee, Sri Lanka</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>24</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>BSc Information Technology Specialising in Data Science</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>sbwaxan@gmail.com</span></li>
-                </ul>
-              </div>
+        <h2>About Me</h2>
+        
+      </div>
+      <div class="container" data-aos="fade-up" style="margin-top: 65px;">
+        <div class="row align-items-start gy-5">
+          <!-- Left Column - Profile Image -->
+          <div class="col-lg-4 d-flex flex-column align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <div class="about-image-wrapper">
+              <div class="glow-circle glow-1"></div>
+              <div class="glow-circle glow-2"></div>
+              <img src="assets/img/profile.jpeg" class="about-image" alt="Profile photo of Brammawaxanan">
             </div>
-            <p class="py-3">
-              I specialize in designing and developing high-quality, responsive websites. With expertise in both front-end and back-end technologies, and design tools like Figma and MockFlow, I deliver functional and visually compelling web solutions tailored to client needs.
-            </p>
-            <!-- Download Resume Button -->
-            <div class="text-center">
-              <a href="assets/waxan.pdf" class="btn btn-primary mt-3" download>
-                <i class="bi bi-download"></i> Download Resume
-              </a>
+            <div class="profile-info-badge">
+              <h4>Brammawaxanan<br>Sivanantharajah</h4>
+              <p>Web Designer &amp; Developer</p>
+            </div>
+          </div>
+
+          <!-- Right Column - Content -->
+          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="100">
+            <div class="about-content-wrapper">
+              <div class="about-header mb-4">
+              
+                <h3 class="about-subtitle">Passionate AI &amp; Web Development Student</h3>
+              </div>
+
+              <p class="about-description mb-4">
+                I am a Web Designer &amp; Web Developer currently studying Information Technology at SLIIT, specializing in Data Science. Passionate about building innovative and functional web solutions, I am always eager to expand my skills and collaborate on exciting projects.
+              </p>
+
+              <!-- Info Cards Grid -->
+              <div class="info-cards-grid mb-4">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                  <div class="info-icon">
+                    <i class="bi bi-mortarboard"></i>
+                  </div>
+                  <div class="info-content">
+                    <h6 class="info-label">EDUCATION</h6>
+                    <p class="info-value">BSc IT @ SLIIT</p>
+                  </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="150">
+                  <div class="info-icon">
+                    <i class="bi bi-telephone"></i>
+                  </div>
+                  <div class="info-content">
+                    <h6 class="info-label">PHONE</h6>
+                    <p class="info-value">+94 76 176 4440</p>
+                  </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                  <div class="info-icon">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                  <div class="info-content">
+                    <h6 class="info-label">EMAIL</h6>
+                    <p class="info-value">sbwaxan@gmail.com</p>
+                  </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="250">
+                  <div class="info-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <div class="info-content">
+                    <h6 class="info-label">LOCATION</h6>
+                    <p class="info-value">Trincomalee, Sri Lanka</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- About Description Points -->
+              <div class="about-points mb-5">
+                <p class="point-item">
+                  <i class="bi bi-arrow-right"></i>
+                  <span>I have expertise in both front-end and back-end technologies such as HTML, CSS, JavaScript, PHP, and MySQL</span>
+                </p>
+                <p class="point-item">
+                  <i class="bi bi-arrow-right"></i>
+                  <span>Proficient in design tools like Figma and MockFlow for creating responsive, user-friendly web solutions</span>
+                </p>
+                <p class="point-item">
+                  <i class="bi bi-arrow-right"></i>
+                  <span>Constantly exploring new technologies and contributing to innovative web projects</span>
+                </p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="about-buttons">
+                <a href="assets/waxan.pdf" class="btn btn-primary btn-lg" download>
+                  <i class="bi bi-download"></i> Download CV
+                </a>
+                <a href="#contact" class="btn btn-outline-primary btn-lg">
+                  <i class="bi bi-chat-square"></i> Contact Me
+                </a>
+              </div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </section><!-- /About Section -->
 
     <!-- Skills Section -->
@@ -363,23 +880,35 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
+        <!-- Primary Skills (Always Visible) -->
         <div class="row skills-content skills-animation">
 
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">80%</i></span>
+              <span class="skill"><span>Java</span> <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">80%</i></span>
+              <span class="skill"><span>Python</span> <i class="val">60%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Spring Boot</span> <i class="val">60%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+          </div>
+
+          <div class="col-lg-6">
 
             <div class="progress">
               <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
@@ -388,33 +917,95 @@
               </div>
             </div><!-- End Skills Item -->
 
-          </div>
-
-          <div class="col-lg-6">
-
             <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">70%</i></span>
+              <span class="skill"><span>React</span> <i class="val">70%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>JAVA</span> <i class="val">70%</i></span>
+              <span class="skill"><span>Tailwind CSS</span> <i class="val">65%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Photoshop</span> <i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
           </div>
 
+        </div>
+
+        <!-- Additional Skills (Hidden by Default) -->
+        <div id="additionalSkills" class="additional-skills" style="display: none;">
+
+          <div class="row skills-content skills-animation">
+
+            <div class="col-lg-6">
+
+              <div class="progress">
+                <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+              <div class="progress">
+                <span class="skill"><span>HTML</span> <i class="val">90%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+              <div class="progress">
+                <span class="skill"><span>CSS</span> <i class="val">80%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+            </div>
+
+            <div class="col-lg-6">
+
+              <div class="progress">
+                <span class="skill"><span>Canva</span> <i class="val">95%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+              <div class="progress">
+                <span class="skill"><span>DaVinci Resolve</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+              <div class="progress">
+                <span class="skill"><span>Kotlin</span> <i class="val">60%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><!-- End Skills Item -->
+
+            </div>
+
+          </div>
+
+          <!-- Toggle Button (Visible at the end of all skills) -->
+          <div class="text-center mt-5">
+            <button class="btn-skills-toggle" id="toggleSkillsBtn" onclick="toggleAdditionalSkills()">
+              <i class="bi bi-chevron-up"></i> See Less Skills
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Toggle Button for Collapsed State -->
+        <div id="toggleButtonContainer" class="text-center mt-5">
+          <button class="btn-skills-toggle" id="toggleSkillsBtnCollapsed" onclick="toggleAdditionalSkills()">
+            <i class="bi bi-chevron-down"></i> See More Skills
+          </button>
         </div>
 
       </div>
@@ -424,51 +1015,111 @@
     <!-- Add Qualification Section -->
     <section id="qualification" class="qualification section">
       <div class="container" data-aos="fade-up">
-        <h2 class="text-center mb-2">Qualification</h2>
-        <p class="text-center mb-5">My personal journey</p>
+        <div class="section-title text-center mb-5">
+          <h2 class="mb-3 fw-bold" style="font-size: 2.5rem;">Qualification</h2>
+          <p class="lead" style="color: #6c757d; font-size: 1.1rem;">My personal journey</p>
+        </div>
         <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div class="d-flex justify-content-center mb-4">
-              <button id="educationBtn" class="btn btn-plain me-3 active" onclick="showQualification('education')">
-                <i class="bi bi-mortarboard" style="font-size: 2rem;"></i>
-                <span class="fw-bold ms-2">Education</span>
+          <div class="col-lg-9">
+            <!-- Toggle Buttons -->
+            <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+              <button id="educationBtn" class="btn btn-plain active" onclick="showQualification('education')" data-aos="fade-right" data-aos-delay="100">
+                <i class="bi bi-mortarboard"></i>
+                <span class="ms-2">Education</span>
               </button>
-              <button id="workBtn" class="btn btn-plain ms-3" onclick="showQualification('work')">
-                <i class="bi bi-briefcase" style="font-size: 2rem;"></i>
-                <span class="fw-bold ms-2">Work</span>
+              <button id="workBtn" class="btn btn-plain" onclick="showQualification('work')" data-aos="fade-left" data-aos-delay="100">
+                <i class="bi bi-briefcase"></i>
+                <span class="ms-2">Work Experience</span>
               </button>
             </div>
-            <div id="educationContent" class="timeline">
-              <div class="timeline-item mb-5">
-                <div class="timeline-dot bg-primary"></div>
-                <div>
-                  <h5 class="fw-bold mb-1">BSc IT Degree</h5>
-                  <div class="text-muted mb-1">SLIIT || 2023 - 2027</div>
-                  <div>Programming, Web designing, Computer network and systems, PHP, JAVA</div>
-                </div>
-              </div>
-              <div class="timeline-item mb-5">
-                <div class="timeline-dot bg-primary"></div>
-                <div>
-                  <h5 class="fw-bold mb-1">Advance certificate In English</h5>
-                  <div class="text-muted mb-1">GANZ Academy || 2022 - 6 months</div>
-                  <div>The spoken English course improves communication, fluency, pronunciation, and writing skills.</div>
-                </div>
-              </div>
+
+            <!-- Education Content -->
+            <div id="educationContent" class="timeline" data-aos="fade-up" data-aos-delay="200">
               <div class="timeline-item">
-                <div class="timeline-dot bg-primary"></div>
+                <div class="timeline-dot"></div>
                 <div>
-                  <h5 class="fw-bold mb-1">G.C.E Advanced Level - (A/L)</h5>
-                  <div class="text-muted mb-1">R.K.M Sri Koneswara hindu college || 2017 - 2019</div>
+                  <h5 class="fw-bold mb-2">BSc Information Technology</h5>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-building me-2"></i>SLIIT (Sri Lanka Institute of Information Technology)
+                  </div>
+                  <div class="text-muted mb-3">
+                    <i class="bi bi-calendar-event me-2"></i>2023 - 2027
+                  </div>
+                  <p class="mb-0" style="color: #495057;">
+                    <strong>Focus Areas:</strong> Programming, Web Design, Computer Networks, Systems Design, PHP, Java
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h5 class="fw-bold mb-2">Advanced Certificate in English</h5>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-building me-2"></i>GANZ Academy
+                  </div>
+                  <div class="text-muted mb-3">
+                    <i class="bi bi-calendar-event me-2"></i>2022 - 6 months
+                  </div>
+                  <p class="mb-0" style="color: #495057;">
+                    Comprehensive English language program enhancing communication skills, fluency, pronunciation, and written expression.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h5 class="fw-bold mb-2">G.C.E Advanced Level (A/L)</h5>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-building me-2"></i>R.K.M Sri Koneswara Hindu College
+                  </div>
+                  <div class="text-muted mb-3">
+                    <i class="bi bi-calendar-event me-2"></i>2017 - 2019
+                  </div>
+                  <p class="mb-0" style="color: #495057;">
+                    <strong>Subjects:</strong> Information Technology, Physics, Chemistry
+                  </p>
                 </div>
               </div>
             </div>
-            <div id="workContent" class="timeline" style="display: none;">
+
+            <!-- Work Experience Content -->
+            <div id="workContent" class="timeline" style="display: none;" data-aos="fade-up" data-aos-delay="200">
               <div class="timeline-item">
-                <div class="timeline-dot bg-secondary"></div>
+                <div class="timeline-dot"></div>
                 <div>
-                  <h5 class="fw-bold mb-1">search the work opportunity</h5>
-                  <div class="text-muted mb-1">Updated..</div>
+                  <h5 class="fw-bold mb-2">Data Entry Operator</h5>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-building me-2"></i>Mayoora Construction
+                  </div>
+                  <div class="text-muted mb-3">
+                    <i class="bi bi-calendar-event me-2"></i>2020 - 2023
+                  </div>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-tools me-2"></i>Microsoft Excel
+                  </div>
+                  <p class="mb-0" style="color: #495057;">
+                    Managed data, updated spreadsheets, ensured accuracy, and maintained project records.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div>
+                  <h5 class="fw-bold mb-2"> Frontend Developer Intern & Digital Marketing</h5>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-building me-2"></i>GAOTek Inc
+                  </div>
+                  <div class="text-muted mb-3">
+                    <i class="bi bi-calendar-event me-2"></i>2025 - 3 months
+                  </div>
+                  <div class="text-muted mb-2">
+                    <i class="bi bi-tools me-2"></i>React.js, Tailwind CSS, Figma, WordPress
+                  </div>
+                  <p class="mb-0" style="color: #495057;">
+                    Built responsive React components from Figma, handled product uploads in WordPress, and improved modern frontend, UI/UX, and professional collaboration abilities.                  </p>
                 </div>
               </div>
             </div>
@@ -483,61 +1134,83 @@
         <p>Most recent works</p>
       </div>
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row align-items-center justify-content-center">
-          <!-- Swiper Prev Arrow -->
-          <div class="col-auto d-flex align-items-center justify-content-center">
-            <div class="swiper-button-prev custom-swiper-arrow"></div>
-          </div>
-          <div class="col-lg-10">
-            <div class="swiper project-swiper position-relative">
-              <div class="swiper-wrapper">
-
-                <!-- Project 1 -->
-                <div class="swiper-slide">
-                  <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-6 text-center">
-                      <img src="assets/img/projects/kid's wolrd.png" alt="Royal Dance Academy Project" class="img-fluid rounded shadow">
-                    </div>
-                    <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column align-items-start justify-content-center">
-                      <h3 class="fw-bold">Kid's World Online shopping store Project</h3>
-                      <p>My Kid's World is a university project, an online dress store for children built using Java MVC architecture. It offers a seamless platform for browsing, ordering, and managing kids’ clothing, providing a user-friendly interface for parents to shop.</p>
-                      <a href="https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World" target="_blank" class="btn btn-info text-white fw-bold px-4 py-2 mt-2" style="border-radius:10px;">
-                        Project Link <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="swiper-slide">
-                  <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-6 text-center">
-                      <img src="assets/img/projects/online job.png" alt="Portfolio Website" class="img-fluid rounded shadow">
-                    </div>
-                    <div class="col-lg-6 mt-4 mt-lg-0 d-flex flex-column align-items-start justify-content-center">
-                      <h3 class="fw-bold">Online jobportal</h3>
-                      <p>Hire Hub is an online job portal developed as part of a university project. Built using PHP, it aims to connect employers with job seekers by providing an intuitive platform for posting job opportunities, applying for roles, and managing user profiles.</p>
-                      <a href="https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal" target="_blank" class="btn btn-info text-white fw-bold px-4 py-2 mt-2" style="border-radius:10px;">
-                        Project Link <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
+        <div class="projects-carousel-wrapper">
+          <div class="projects-carousel" id="projectsCarousel">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="assets/img/projects/kid's wolrd.png" alt="Kid's World Online shopping store" class="project-image">
+                <div class="project-overlay"></div>
               </div>
-              <div class="swiper-pagination mt-4"></div>
+              <div class="project-content">
+                <h3 class="project-title">Kid's World Online shopping store</h3>
+                <p class="project-tech">Java MVC Architecture</p>
+                <p class="project-description">An online dress store for children offering a seamless platform for browsing, ordering, and managing kids' clothing with a user-friendly interface for parents to shop.</p>
+                <a href="https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World" target="_blank" class="project-btn">
+                  View Project <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
             </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="assets/img/projects/online job.png" alt="Online Job Portal" class="project-image">
+                <div class="project-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Online Job Portal</h3>
+                <p class="project-tech">PHP Backend</p>
+                <p class="project-description">Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.</p>
+                <a href="https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal" target="_blank" class="project-btn">
+                  View Project <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="assets/img/projects/online job.png" alt="Online Job Portal" class="project-image">
+                <div class="project-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Online Job Portal</h3>
+                <p class="project-tech">PHP Backend</p>
+                <p class="project-description">Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.</p>
+                <a href="https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal" target="_blank" class="project-btn">
+                  View Project <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+           
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-image-wrapper">
+                <img src="assets/img/projects/online job.png" alt="Online Job Portal" class="project-image">
+                <div class="project-overlay"></div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Online Job Portal</h3>
+                <p class="project-tech">PHP Backend</p>
+                <p class="project-description">Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.</p>
+                <a href="https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal" target="_blank" class="project-btn">
+                  View Project <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+            
           </div>
-          <!-- Swiper Next Arrow -->
-          <div class="col-auto d-flex align-items-center justify-content-center">
-            <div class="swiper-button-next custom-swiper-arrow"></div>
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+            <span class="indicator" data-index="3"></span>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -594,22 +1267,100 @@
       </div>
     </section><!-- /Services Section -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
+    <!-- Certifications & Achievements Section -->
+    <section id="certifications" class="certifications section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p class="text-center text-muted">No testimonials yet. If a client shares feedback about my work in the future, it will appear here.</p>
+        <h2>Certifications & Achievements</h2>
+        <p>Professional credentials and accomplishments</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="alert alert-info text-center my-5" role="alert">
-          <i class="bi bi-info-circle"></i> No testimonials available at the moment.
+        <div class="row g-4">
+
+          <!-- Certification Card 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-award"></i>
+              </div>
+              <h4 class="cert-title">Frontend Developer Internship</h4>
+              <p class="cert-organization">GAOTek Inc</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2025</p>
+              <p class="cert-description">Completed professional frontend development internship focusing on React.js, Tailwind CSS, and modern UI/UX design principles.</p>
+            </div>
+          </div>
+
+          <!-- Certification Card 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-certificate"></i>
+              </div>
+              <h4 class="cert-title">Advanced Certificate in English</h4>
+              <p class="cert-organization">GANZ Academy</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2022</p>
+              <p class="cert-description">Comprehensive English language certification focusing on communication skills, fluency, pronunciation, and written expression.</p>
+            </div>
+          </div>
+
+          <!-- Certification Card 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-mortarboard"></i>
+              </div>
+              <h4 class="cert-title">BSc Information Technology</h4>
+              <p class="cert-organization">SLIIT</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2023 - 2027</p>
+              <p class="cert-description">Pursuing degree with specialization in Data Science, focusing on programming, web design, and systems architecture.</p>
+            </div>
+          </div>
+
+          <!-- Certification Card 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-star"></i>
+              </div>
+              <h4 class="cert-title">Web Design Excellence</h4>
+              <p class="cert-organization">Self-Certified Achievement</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2024</p>
+              <p class="cert-description">Demonstrated expertise in responsive design, UI/UX principles, and modern web technologies through portfolio projects.</p>
+            </div>
+          </div>
+
+          <!-- Certification Card 5 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-code-square"></i>
+              </div>
+              <h4 class="cert-title">Full Stack Development</h4>
+              <p class="cert-organization">Self-Certified Achievement</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2024</p>
+              <p class="cert-description">Proficiency in both frontend and backend technologies including HTML, CSS, JavaScript, PHP, Java, and MySQL.</p>
+            </div>
+          </div>
+
+          <!-- Certification Card 6 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i class="bi bi-palette"></i>
+              </div>
+              <h4 class="cert-title">Design Tools Mastery</h4>
+              <p class="cert-organization">Self-Certified Achievement</p>
+              <p class="cert-year"><i class="bi bi-calendar-event"></i> 2024</p>
+              <p class="cert-description">Expert proficiency in design tools including Figma, Canva, DaVinci Resolve, and MockFlow for creating engaging visuals.</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section><!-- /Certifications & Achievements Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
