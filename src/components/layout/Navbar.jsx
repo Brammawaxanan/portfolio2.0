@@ -42,7 +42,7 @@ export function Navbar({ navItems, activeSection }) {
             href={`#${item.id}`}
             onClick={closeMenu}
           >
-            {item.label}
+            {item.sectionTitle ?? item.label}
           </a>
         ))}
       </nav>

@@ -12,16 +12,27 @@ import { Certificates } from "./components/sections/Certificates.jsx";
 import { Services } from "./components/sections/Services.jsx";
 import { Contact } from "./components/sections/Contact.jsx";
 import { useActiveSection } from "./hooks/useActiveSection.js";
+import { ActiveSectionContext } from "./hooks/useActiveSectionContext.js";
 
 const navItems = [
-  { id: "home", label: "Home", icon: "bi-house" },
-  { id: "about", label: "About", icon: "bi-person" },
-  { id: "skills", label: "Skills", icon: "bi-star" },
-  { id: "qualifications", label: "Qualification", icon: "bi-mortarboard" },
-  { id: "projects", label: "Projects", icon: "bi-images" },
-  { id: "services", label: "Services", icon: "bi-hdd-stack" },
-  { id: "certificates", label: "Certifications", icon: "bi-award" },
-  { id: "contact", label: "Contact", icon: "bi-envelope" },
+  { id: "home", label: "Home", sectionTitle: "Home", icon: "bi-house" },
+  { id: "about", label: "About", sectionTitle: "About Me", icon: "bi-person" },
+  { id: "skills", label: "Skills", sectionTitle: "Skills", icon: "bi-star" },
+  {
+    id: "qualifications",
+    label: "Qualification",
+    sectionTitle: "Qualification",
+    icon: "bi-mortarboard",
+  },
+  { id: "projects", label: "Projects", sectionTitle: "Projects", icon: "bi-images" },
+  { id: "services", label: "Services", sectionTitle: "Services", icon: "bi-hdd-stack" },
+  {
+    id: "certificates",
+    label: "Certifications",
+    sectionTitle: "Certifications & Achievements",
+    icon: "bi-award",
+  },
+  { id: "contact", label: "Contact", sectionTitle: "Contact", icon: "bi-envelope" },
 ];
 
 export function App() {
@@ -29,7 +40,7 @@ export function App() {
   const activeSection = useActiveSection(sectionIds);
 
   return (
-    <>
+    <ActiveSectionContext.Provider value={activeSection}>
       <Navbar navItems={navItems} activeSection={activeSection} />
       <Sidebar navItems={navItems} activeSection={activeSection} />
       <main id="main-content">
@@ -44,6 +55,6 @@ export function App() {
       </main>
       <Footer />
       <ScrollToTop />
-    </>
+    </ActiveSectionContext.Provider>
   );
 }
