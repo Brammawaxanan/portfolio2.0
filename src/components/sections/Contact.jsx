@@ -2,7 +2,27 @@ import { useState } from "react";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
 
-const contactApiUrl = import.meta.env.VITE_CONTACT_API_URL || "/api/contact";
+function resolveContactApiUrl() {
+  const configuredUrl = import.meta.env.VITE_CONTACT_API_URL?.trim();
+
+  if (!configuredUrl || configuredUrl === "/forms/contact.php") {
+    return "/api/contact";
+  }
+
+  try {
+    const parsedUrl = new URL(configuredUrl, window.location.origin);
+
+    if (parsedUrl.origin === window.location.origin && parsedUrl.pathname === "/forms/contact.php") {
+      return "/api/contact";
+    }
+  } catch {
+    return "/api/contact";
+  }
+
+  return configuredUrl;
+}
+
+const contactApiUrl = resolveContactApiUrl();
 
 export function Contact() {
   const [status, setStatus] = useState({ type: "idle", message: "" });

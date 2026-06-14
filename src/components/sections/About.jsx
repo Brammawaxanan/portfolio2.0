@@ -1,6 +1,7 @@
 import { Button } from "../ui/Button.jsx";
 import { InfoCard } from "../ui/InfoCard.jsx";
 import { Reveal } from "../ui/Reveal.jsx";
+import { ResumeDropdown } from "../ui/ResumeDropdown.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
 
 const infoCards = [
@@ -70,9 +71,7 @@ export function About() {
             </div>
 
             <div className="about-buttons">
-              <Button href="/waxan.pdf" download>
-                <i className="bi bi-download" aria-hidden="true" /> Download CV
-              </Button>
+              <ResumeDropdown />
               <Button href="#contact" variant="outline">
                 <i className="bi bi-chat-square" aria-hidden="true" /> Contact Me
               </Button>

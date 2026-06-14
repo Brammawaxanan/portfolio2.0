@@ -509,6 +509,137 @@ button {
   background: var(--accent-soft);
 }
 
+.resume-dropdown {
+  position: relative;
+  z-index: 12;
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.resume-trigger {
+  position: relative;
+  z-index: 2;
+  min-width: 154px;
+}
+
+.resume-trigger-icon {
+  font-size: 0.78rem;
+  transition: transform 180ms ease;
+}
+
+.resume-dropdown.is-open .resume-trigger-icon {
+  transform: rotate(180deg);
+}
+
+.resume-menu {
+  position: fixed;
+  z-index: 2147483000;
+  padding: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 86%, transparent), color-mix(in srgb, var(--surface-strong) 76%, transparent)),
+    radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%);
+  box-shadow:
+    0 24px 58px color-mix(in srgb, var(--heading) 16%, transparent),
+    0 0 0 1px color-mix(in srgb, #fff 38%, transparent) inset,
+    0 0 42px color-mix(in srgb, var(--accent) 16%, transparent);
+  backdrop-filter: blur(18px) saturate(1.18);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 180ms ease;
+  visibility: hidden;
+}
+
+.resume-menu-bottom {
+  transform: translate3d(0, -8px, 0) scale(0.96);
+  transform-origin: top center;
+}
+
+.resume-menu-top {
+  transform: translate3d(0, 8px, 0) scale(0.96);
+  transform-origin: bottom center;
+}
+
+.resume-menu.is-open.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0) scale(1);
+  visibility: visible;
+}
+
+.resume-menu::before {
+  content: "";
+  position: absolute;
+  height: 0.85rem;
+}
+
+.resume-menu-bottom::before {
+  inset: -0.85rem 0 auto;
+}
+
+.resume-menu-top::before {
+  inset: auto 0 -0.85rem;
+}
+
+.resume-menu-item {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 0.78rem;
+  align-items: center;
+  min-height: 62px;
+  padding: 0.62rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--heading);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.resume-menu-item:hover,
+.resume-menu-item:focus-visible {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 26%, transparent);
+  background: color-mix(in srgb, var(--accent) 11%, var(--surface));
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 16%, transparent);
+  transform: translateX(4px);
+}
+
+.resume-menu-icon {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.resume-menu-item strong,
+.resume-menu-item small {
+  display: block;
+  line-height: 1.2;
+}
+
+.resume-menu-item strong {
+  font-size: 0.94rem;
+}
+
+.resume-menu-item small {
+  margin-top: 0.22rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
 .about-grid {
   display: grid;
   gap: clamp(2rem, 5vw, 4rem);
@@ -1487,6 +1618,16 @@ button {
 }
 
 @media (max-width: 720px) {
+  .hero-actions,
+  .about-buttons {
+    align-items: stretch;
+  }
+
+  .resume-dropdown,
+  .resume-trigger {
+    width: 100%;
+  }
+
   .projects-carousel {
     padding-inline: 0.65rem;
   }

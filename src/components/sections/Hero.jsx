@@ -1,5 +1,6 @@
 import { Button } from "../ui/Button.jsx";
 import { Reveal } from "../ui/Reveal.jsx";
+import { ResumeDropdown } from "../ui/ResumeDropdown.jsx";
 import { SocialLinks } from "../ui/SocialLinks.jsx";
 import { useTypingEffect } from "../../hooks/useTypingEffect.js";
 
@@ -32,9 +33,7 @@ export function Hero() {
         <SocialLinks />
         <div className="hero-actions">
           <Button href="#projects">View Projects</Button>
-          <Button href="/waxan.pdf" variant="secondary" download>
-            Download CV
-          </Button>
+          <ResumeDropdown variant="secondary" />
           <Button href="#contact" variant="outline">
             Contact Me
           </Button>

@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/forms/contact.php",
+      "destination": "/api/contact"
+    },
+    {
+      "source": "/forms/test-mongodb.php",
+      "destination": "/api/test-mongodb"
+    }
+  ]
+}
