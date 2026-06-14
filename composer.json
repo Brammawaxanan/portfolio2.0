@@ -1,0 +1,8 @@
+{
+    "name": "sbwaxan/portfolio-backend",
+    "description": "Secure PHP contact API backend for the portfolio site.",
+    "license": "proprietary",
+    "require": {
+        "mongodb/mongodb": "^2.3"
+    }
+}

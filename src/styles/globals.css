@@ -1251,6 +1251,13 @@ button {
   outline: none;
 }
 
+.contact-form input:disabled,
+.contact-form textarea:disabled,
+.contact-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
 .contact-form textarea {
   resize: vertical;
 }
@@ -1272,6 +1279,28 @@ button {
   background: var(--accent-strong);
   box-shadow: 0 16px 34px color-mix(in srgb, var(--accent) 24%, transparent);
   transform: translateY(-3px);
+}
+
+.contact-form button:disabled:hover,
+.contact-form button:disabled:focus-visible {
+  background: var(--accent);
+  box-shadow: none;
+  transform: none;
+}
+
+.form-status {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-status-success {
+  color: #168044;
+}
+
+.form-status-error {
+  color: #b42318;
 }
 
 .site-footer {

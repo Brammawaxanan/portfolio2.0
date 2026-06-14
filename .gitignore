@@ -1,4 +1,8 @@
 node_modules/
+vendor/
 dist/
 .vite/
 .DS_Store
+.env
+.env.*
+!.env.example
