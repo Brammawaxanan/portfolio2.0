@@ -43,6 +43,26 @@ const projects = [
   image: "/img/projects/edutrack-poster.png",
   alt: "EduTrack Smart Campus Operations Hub",
   href: "https://github.com/KabiththananParan/it3030-paf-2026-smart-campus.git",
+  },
+  {
+  id: "dwbi-ecommerce-analytics-featured",
+  title: "E-Commerce DWBI Analytics Project",
+  tech: "SSAS • Power BI • OLAP • Data Warehouse",
+  description:
+    "A data warehousing and business intelligence project built using an e-commerce transactional dataset. The project includes SSAS cube implementation, dimension and measure configuration, OLAP operations such as roll-up, drill-down, slice, dice, and pivot, and interactive Power BI reports for analyzing sales performance, product categories, customer locations, and payment trends.",
+  image: "img/projects/dwbi-ecommerce-poster.png",
+  alt: "E-Commerce Data Warehouse and Business Intelligence Analytics Project",
+  href: "https://mysliit-my.sharepoint.com/:f:/g/personal/it23680920_my_sliit_lk/IgCP0Zs5fg8BSIZOZGHiYiEKAX0EVZMzahSwOZF-MG6el_U?e=nOP8VP",
+  },
+  {
+    id: "iris-svm-classification-featured",
+    title: "Iris Flower Species Classification",
+    tech: "Python • Scikit-learn • SVM",
+    description:
+      "A beginner-friendly machine learning classification project that uses the Iris dataset to predict flower species based on sepal and petal measurements. The project includes EDA, correlation analysis, feature scaling, SVM model training, evaluation, and model saving.",
+    image: "/img/projects/iris-svm-poster.png",
+    alt: "Iris Flower Species Classification using SVM",
+    href: "https://github.com/Brammawaxanan/CodeAlpha_IrisClassification_DataScience.git",
   }
 ];
 
