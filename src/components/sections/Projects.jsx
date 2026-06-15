@@ -15,16 +15,16 @@ const projects = [
     href: "https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World",
   },
   {
-    id: "kids-world-store-featured",
-    title: "Kid's World Online shopping store",
-    tech: "Java MVC Architecture",
+    id: "carenet-featured",
+    title: "CareNet – In-Home Care Service Management Platform",
+    tech: "React.js • Spring Boot • MySQL",
     description:
-      "An online dress store for children offering a seamless platform for browsing, ordering, and managing kids' clothing with a user-friendly interface for parents to shop.",
-    image: "/img/projects/kid's wolrd.png",
-    alt: "Kid's World Online shopping store",
-    href: "https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World",
-  },
-  {
+      "A full-stack caregiver service management platform that connects clients with caregivers and provides admin task management, assignment tracking, proof verification, billing overview, and dashboard analytics.",
+    image: "/img/projects/carenet.png",
+    alt: "CareNet In-Home Care Service Management Platform",
+    href: "https://github.com/Brammawaxanan/final-carenet-website.git",
+ },
+ {
     id: "online-job-portal",
     title: "Online Job Portal",
     tech: "PHP Backend",
@@ -35,14 +35,14 @@ const projects = [
     href: "https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal",
   },
   {
-    id: "online-job-portal-featured",
-    title: "Online Job Portal",
-    tech: "PHP Backend",
-    description:
-      "Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.",
-    image: "/img/projects/online job.png",
-    alt: "Online Job Portal",
-    href: "https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal",
+  id: "edutrack-smart-campus-featured",
+  title: "EduTrack – Smart Campus Operations Hub",
+  tech: "Spring Boot • React • MySQL • Java ML",
+  description:
+    "A group full-stack smart campus platform for managing campus resources, bookings, incidents, role-based dashboards, notifications, and admin workflows. My main contribution was developing the ticket management module for handling student requests, status updates, and resolution tracking.",
+  image: "/img/projects/edutrack-poster.png",
+  alt: "EduTrack Smart Campus Operations Hub",
+  href: "https://github.com/KabiththananParan/it3030-paf-2026-smart-campus.git",
   }
 ];
 

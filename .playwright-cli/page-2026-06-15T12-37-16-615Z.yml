@@ -1,0 +1,491 @@
+- generic [ref=e2]:
+  - text: 
+  - complementary "Primary navigation":
+    - navigation [ref=e3]:
+      - link "Home" [ref=e4] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=e5]: 
+        - generic: Home
+      - link "About Me" [ref=e6] [cursor=pointer]:
+        - /url: "#about"
+        - generic [ref=e7]: 
+        - generic: About Me
+      - link "Skills" [ref=e8] [cursor=pointer]:
+        - /url: "#skills"
+        - generic [ref=e9]: 
+        - generic: Skills
+      - link "Qualification" [ref=e10] [cursor=pointer]:
+        - /url: "#qualifications"
+        - generic [ref=e11]: 
+        - generic: Qualification
+      - link "Projects" [ref=e12] [cursor=pointer]:
+        - /url: "#projects"
+        - generic [ref=e13]: 
+        - generic: Projects
+      - link "Services" [ref=e14] [cursor=pointer]:
+        - /url: "#services"
+        - generic [ref=e15]: 
+        - generic: Services
+      - link "Certifications & Achievements" [ref=e16] [cursor=pointer]:
+        - /url: "#certificates"
+        - generic [ref=e17]: 
+        - generic: Certifications & Achievements
+      - link "Contact" [ref=e18] [cursor=pointer]:
+        - /url: "#contact"
+        - generic [ref=e19]: 
+        - generic: Contact
+    - button "Switch to dark mode" [ref=e20] [cursor=pointer]:
+      - generic [ref=e21]: 
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - img "Brammawaxanan Sivanantharajah"
+      - generic [ref=e24]:
+        - paragraph [ref=e25]: DATA ANALYTICS | AI/ML | DATA ENGINEERING
+        - heading "Brammawaxanan Sivanantharajah" [level=1] [ref=e26]
+        - paragraph [ref=e27]
+        - paragraph [ref=e30]: Data Science undergraduate at SLIIT focused on Data Analytics, AI/ML, and Data Engineering.
+        - generic [ref=e31]:
+          - link "GitHub" [ref=e32] [cursor=pointer]:
+            - /url: https://github.com/Brammawaxanan
+            - generic [ref=e33]: 
+          - link "WhatsApp" [ref=e34] [cursor=pointer]:
+            - /url: https://wa.me/94761764440
+            - generic [ref=e35]: 
+          - link "Facebook" [ref=e36] [cursor=pointer]:
+            - /url: https://web.facebook.com/Brammawaxanan
+            - generic [ref=e37]: 
+          - link "Instagram" [ref=e38] [cursor=pointer]:
+            - /url: https://www.instagram.com/sb_waxan_14/
+            - generic [ref=e39]: 
+          - link "LinkedIn" [ref=e40] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/brammawaxanan14/
+            - generic [ref=e41]: 
+        - generic [ref=e42]:
+          - link "View Projects" [ref=e43] [cursor=pointer]:
+            - /url: "#projects"
+          - button "Download CV" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]: 
+            - generic [ref=e47]: Download CV
+            - generic [ref=e48]: 
+          - link "Contact Me" [ref=e49] [cursor=pointer]:
+            - /url: "#contact"
+    - generic [ref=e51]:
+      - heading "About Me" [level=2] [ref=e55]
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - img "Profile photo of Brammawaxanan" [ref=e61]
+          - generic [ref=e62]:
+            - heading "Brammawaxanan Sivanantharajah" [level=3] [ref=e63]:
+              - text: Brammawaxanan
+              - text: Sivanantharajah
+            - paragraph [ref=e64]:
+              - text: Data Science Undergraduate
+              - text: AI/ML & Analytics Enthusiast
+        - generic [ref=e65]:
+          - heading "Aspiring Data Analyst & AI/ML Developer" [level=3] [ref=e66]
+          - paragraph [ref=e67]: I am a 3rd-year Data Science undergraduate at SLIIT, passionate about Data Analytics, Artificial Intelligence, Machine Learning, and Data Engineering. I enjoy working with real-world datasets, cleaning and analyzing data, building predictive models, and creating dashboards that support better decision-making. I am continuously improving my skills in Python, SQL, Power BI, Machine Learning, and modern web technologies.
+          - generic [ref=e68]:
+            - article [ref=e69]:
+              - generic [ref=e71]: 
+              - generic [ref=e72]:
+                - heading "Education" [level=3] [ref=e73]
+                - paragraph [ref=e74]: BSc (Hons) IT - Data Science SLIIT | 3rd Year
+            - article [ref=e75]:
+              - generic [ref=e77]: 
+              - generic [ref=e78]:
+                - heading "Phone" [level=3] [ref=e79]
+                - paragraph [ref=e80]: +94 76 176 4440
+            - article [ref=e81]:
+              - generic [ref=e83]: 
+              - generic [ref=e84]:
+                - heading "Email" [level=3] [ref=e85]
+                - paragraph [ref=e86]: sbwaxan@gmail.com
+            - article [ref=e87]:
+              - generic [ref=e89]: 
+              - generic [ref=e90]:
+                - heading "Location" [level=3] [ref=e91]
+                - paragraph [ref=e92]: Colombo, Sri Lanka
+          - generic [ref=e93]:
+            - paragraph [ref=e94]:
+              - generic [ref=e95]: 
+              - generic [ref=e96]: Strong foundation in Data Analytics, including data cleaning, EDA, visualization, SQL queries, and dashboard development.
+            - paragraph [ref=e97]:
+              - generic [ref=e98]: 
+              - generic [ref=e99]: Building AI/ML skills using Python, Pandas, NumPy, Scikit-learn, Matplotlib, and machine learning model evaluation.
+            - paragraph [ref=e100]:
+              - generic [ref=e101]: 
+              - generic [ref=e102]: Learning Data Engineering concepts such as databases, APIs, ETL workflows, MongoDB, and backend integration.
+          - generic [ref=e103]:
+            - button "Download CV" [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]: 
+              - generic [ref=e107]: Download CV
+              - generic [ref=e108]: 
+            - link "Contact Me" [ref=e109] [cursor=pointer]:
+              - /url: "#contact"
+              - generic [ref=e110]: 
+              - text: Contact Me
+    - generic [ref=e112]:
+      - generic [ref=e114]:
+        - heading "Skills" [level=2] [ref=e116]
+        - paragraph [ref=e117]: I am continuously improving my skills in Data Analytics, AI/ML, Data Engineering, and Web Development to build practical data-driven solutions.
+      - generic [ref=e118]:
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - generic [ref=e123]: Python
+            - strong [ref=e124]: Intermediate
+          - generic [ref=e125]: 75%
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: SQL
+            - strong [ref=e132]: Intermediate
+          - generic [ref=e133]: 75%
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - generic [ref=e139]: Power BI
+            - strong [ref=e140]: Intermediate
+          - generic [ref=e141]: 70%
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: Excel
+            - strong [ref=e148]: Advanced
+          - generic [ref=e149]: 80%
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - generic [ref=e155]: Pandas
+            - strong [ref=e156]: Intermediate
+          - generic [ref=e157]: 70%
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - generic [ref=e163]: NumPy
+            - strong [ref=e164]: Intermediate
+          - generic [ref=e165]: 65%
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - generic [ref=e171]: Machine Learning
+            - strong [ref=e172]: Intermediate
+          - generic [ref=e173]: 65%
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e179]: Scikit-learn
+            - strong [ref=e180]: Intermediate
+          - generic [ref=e181]: 60%
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - generic [ref=e187]: Data Visualization
+            - strong [ref=e188]: Intermediate
+          - generic [ref=e189]: 70%
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - generic [ref=e195]: Data Cleaning
+          - strong [ref=e196]: Intermediate
+        - generic [ref=e197]: 75%
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]: MongoDB
+          - strong [ref=e204]: Intermediate
+        - generic [ref=e205]: 70%
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - generic [ref=e211]: MySQL
+          - strong [ref=e212]: Intermediate
+        - generic [ref=e213]: 75%
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]: Node.js
+          - strong [ref=e220]: Intermediate
+        - generic [ref=e221]: 70%
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e227]: Express.js
+          - strong [ref=e228]: Intermediate
+        - generic [ref=e229]: 65%
+      - generic [ref=e233]:
+        - generic [ref=e234]:
+          - generic [ref=e235]: React
+          - strong [ref=e236]: Intermediate
+        - generic [ref=e237]: 70%
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - generic [ref=e243]: JavaScript
+          - strong [ref=e244]: Intermediate
+        - generic [ref=e245]: 75%
+      - generic [ref=e249]:
+        - generic [ref=e250]:
+          - generic [ref=e251]: HTML
+          - strong [ref=e252]: Advanced
+        - generic [ref=e253]: 90%
+      - generic [ref=e257]:
+        - generic [ref=e258]:
+          - generic [ref=e259]: CSS
+          - strong [ref=e260]: Advanced
+        - generic [ref=e261]: 80%
+      - generic [ref=e265]:
+        - generic [ref=e266]:
+          - generic [ref=e267]: Tailwind CSS
+          - strong [ref=e268]: Intermediate
+        - generic [ref=e269]: 65%
+      - generic [ref=e273]:
+        - generic [ref=e274]:
+          - generic [ref=e275]: GitHub
+          - strong [ref=e276]: Intermediate
+        - generic [ref=e277]: 75%
+      - button "See More" [ref=e280] [cursor=pointer]:
+        - generic [ref=e281]: 
+        - text: See More
+    - generic [ref=e283]:
+      - generic [ref=e285]:
+        - heading "Qualification" [level=2] [ref=e287]
+        - paragraph [ref=e288]: My personal journey
+      - generic [ref=e289]:
+        - button "Education" [pressed] [ref=e290] [cursor=pointer]:
+          - generic [ref=e291]: 
+          - text: Education
+        - button "Work Experience" [ref=e292] [cursor=pointer]:
+          - generic [ref=e293]: 
+          - text: Work Experience
+      - generic [ref=e295]:
+        - article [ref=e297]:
+          - generic [ref=e299]:
+            - heading "BSc Information Technology" [level=3] [ref=e300]
+            - paragraph [ref=e301]:
+              - generic [ref=e302]: 
+              - text: SLIIT (Sri Lanka Institute of Information Technology)
+            - paragraph [ref=e303]:
+              - generic [ref=e304]: 
+              - text: 2023 - 2027
+            - paragraph [ref=e305]: "Focus Areas: Programming, Web Design, Computer Networks, Systems Design, PHP, Java"
+        - article [ref=e307]:
+          - generic [ref=e309]:
+            - heading "Advanced Certificate in English" [level=3] [ref=e310]
+            - paragraph [ref=e311]:
+              - generic [ref=e312]: 
+              - text: GANZ Academy
+            - paragraph [ref=e313]:
+              - generic [ref=e314]: 
+              - text: 2022 - 6 months
+            - paragraph [ref=e315]: Comprehensive English language program enhancing communication skills, fluency, pronunciation, and written expression.
+        - article [ref=e317]:
+          - generic [ref=e319]:
+            - heading "G.C.E Advanced Level (A/L)" [level=3] [ref=e320]
+            - paragraph [ref=e321]:
+              - generic [ref=e322]: 
+              - text: R.K.M Sri Koneswara Hindu College
+            - paragraph [ref=e323]:
+              - generic [ref=e324]: 
+              - text: 2017 - 2019
+            - paragraph [ref=e325]: "Subjects: Information Technology, Physics, Chemistry"
+    - generic [ref=e327]:
+      - generic [ref=e329]:
+        - heading "Projects" [level=2] [ref=e331]
+        - paragraph [ref=e332]: Most recent works
+      - generic "Selected projects" [ref=e334]:
+        - button "Show previous project" [ref=e335] [cursor=pointer]:
+          - generic [ref=e336]: 
+        - generic [ref=e337]:
+          - link "Open Kid's World Online shopping store project" [ref=e338] [cursor=pointer]:
+            - /url: https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World
+            - img "Kid's World Online shopping store" [ref=e340]
+            - generic [ref=e342]:
+              - paragraph [ref=e343]: Java MVC Architecture
+              - heading "Kid's World Online shopping store" [level=3] [ref=e344]
+              - paragraph [ref=e345]: An online dress store for children offering a seamless platform for browsing, ordering, and managing kids' clothing with a user-friendly interface for parents to shop.
+              - generic [ref=e346]:
+                - text: View Project
+                - generic [ref=e347]: 
+          - link "Open Kid's World Online shopping store project" [ref=e348] [cursor=pointer]:
+            - /url: https://github.com/Brammawaxanan/Kids-World-Online-Store/tree/main/Kid's%20World
+            - img "Kid's World Online shopping store" [ref=e350]
+            - generic [ref=e352]:
+              - paragraph [ref=e353]: Java MVC Architecture
+              - heading "Kid's World Online shopping store" [level=3] [ref=e354]
+              - paragraph [ref=e355]: An online dress store for children offering a seamless platform for browsing, ordering, and managing kids' clothing with a user-friendly interface for parents to shop.
+              - generic [ref=e356]:
+                - text: View Project
+                - generic [ref=e357]: 
+          - link "Open Online Job Portal project":
+            - /url: https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal
+            - generic:
+              - img "Online Job Portal"
+            - generic:
+              - paragraph: PHP Backend
+              - heading "Online Job Portal" [level=3]
+              - paragraph: Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.
+              - generic:
+                - text: View Project
+                - generic: 
+          - link "Open Online Job Portal project" [ref=e358] [cursor=pointer]:
+            - /url: https://github.com/Brammawaxanan/online-job-portal/tree/main/jobportal
+            - img "Online Job Portal" [ref=e360]
+            - generic [ref=e362]:
+              - paragraph [ref=e363]: PHP Backend
+              - heading "Online Job Portal" [level=3] [ref=e364]
+              - paragraph [ref=e365]: Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.
+              - generic [ref=e366]:
+                - text: View Project
+                - generic [ref=e367]: 
+        - button "Show next project" [ref=e368] [cursor=pointer]:
+          - generic [ref=e369]: 
+        - generic [ref=e370]:
+          - generic [ref=e371]: 1 / 4
+          - generic [ref=e372]: Auto playing
+    - generic [ref=e374]:
+      - generic [ref=e376]:
+        - heading "Services" [level=2] [ref=e378]
+        - paragraph [ref=e379]: What I offer
+      - generic [ref=e380]:
+        - article [ref=e382]:
+          - generic [ref=e384]: 
+          - heading "Programming" [level=3] [ref=e385]
+          - button "View more" [ref=e386] [cursor=pointer]:
+            - text: View more
+            - generic [ref=e387]: 
+        - article [ref=e389]:
+          - generic [ref=e391]: 
+          - heading "Designer" [level=3] [ref=e392]
+          - button "View more" [ref=e393] [cursor=pointer]:
+            - text: View more
+            - generic [ref=e394]: 
+        - article [ref=e396]:
+          - generic [ref=e398]: 
+          - heading "Web Developer" [level=3] [ref=e399]
+          - button "View more" [ref=e400] [cursor=pointer]:
+            - text: View more
+            - generic [ref=e401]: 
+    - generic [ref=e403]:
+      - generic [ref=e405]:
+        - heading "Certifications & Achievements" [level=2] [ref=e407]
+        - paragraph [ref=e408]: Professional credentials and accomplishments
+      - generic [ref=e409]:
+        - article [ref=e411]:
+          - generic [ref=e413]: 
+          - heading "Frontend Developer Internship" [level=3] [ref=e414]
+          - paragraph [ref=e415]: GAOTek Inc
+          - paragraph [ref=e416]:
+            - generic [ref=e417]: 
+            - text: "2025"
+          - paragraph [ref=e418]: Completed professional frontend development internship focusing on React.js, Tailwind CSS, and modern UI/UX design principles.
+        - article [ref=e420]:
+          - heading "Advanced Certificate in English" [level=3] [ref=e422]
+          - paragraph [ref=e423]: GANZ Academy
+          - paragraph [ref=e424]:
+            - generic [ref=e425]: 
+            - text: "2022"
+          - paragraph [ref=e426]: Comprehensive English language certification focusing on communication skills, fluency, pronunciation, and written expression.
+        - article [ref=e428]:
+          - generic [ref=e430]: 
+          - heading "BSc Information Technology" [level=3] [ref=e431]
+          - paragraph [ref=e432]: SLIIT
+          - paragraph [ref=e433]:
+            - generic [ref=e434]: 
+            - text: 2023 - 2027
+          - paragraph [ref=e435]: Pursuing degree with specialization in Data Science, focusing on programming, web design, and systems architecture.
+        - article [ref=e437]:
+          - generic [ref=e439]: 
+          - heading "Web Design Excellence" [level=3] [ref=e440]
+          - paragraph [ref=e441]: Self-Certified Achievement
+          - paragraph [ref=e442]:
+            - generic [ref=e443]: 
+            - text: "2024"
+          - paragraph [ref=e444]: Demonstrated expertise in responsive design, UI/UX principles, and modern web technologies through portfolio projects.
+        - article [ref=e446]:
+          - generic [ref=e448]: 
+          - heading "Full Stack Development" [level=3] [ref=e449]
+          - paragraph [ref=e450]: Self-Certified Achievement
+          - paragraph [ref=e451]:
+            - generic [ref=e452]: 
+            - text: "2024"
+          - paragraph [ref=e453]: Proficiency in both frontend and backend technologies including HTML, CSS, JavaScript, PHP, Java, and MySQL.
+        - article [ref=e455]:
+          - generic [ref=e457]: 
+          - heading "Design Tools Mastery" [level=3] [ref=e458]
+          - paragraph [ref=e459]: Self-Certified Achievement
+          - paragraph [ref=e460]:
+            - generic [ref=e461]: 
+            - text: "2024"
+          - paragraph [ref=e462]: Expert proficiency in design tools including Figma, Canva, DaVinci Resolve, and MockFlow for creating engaging visuals.
+    - generic [ref=e464]:
+      - generic [ref=e466]:
+        - heading "Contact" [level=2] [ref=e468]
+        - paragraph [ref=e469]: If you want to say anything, contact me.
+      - generic [ref=e470]:
+        - generic [ref=e471]:
+          - article [ref=e472]:
+            - generic [ref=e473]: 
+            - generic [ref=e474]:
+              - heading "Address" [level=3] [ref=e475]
+              - paragraph [ref=e476]: 108, Lower Road, Orr's hill, Trincomalee, Sri Lanka.
+          - article [ref=e477]:
+            - generic [ref=e478]: 
+            - generic [ref=e479]:
+              - heading "Call Us" [level=3] [ref=e480]
+              - paragraph [ref=e481]: +94 761764440
+          - article [ref=e482]:
+            - generic [ref=e483]: 
+            - generic [ref=e484]:
+              - heading "Email Us" [level=3] [ref=e485]
+              - paragraph [ref=e486]: sbwaxan@gmail.com
+        - generic [ref=e487]:
+          - generic [ref=e488]:
+            - textbox "Your Name" [ref=e489]
+            - textbox "Your Email" [ref=e490]
+          - textbox "Subject" [ref=e491]
+          - textbox "Message" [ref=e492]
+          - button "Send Message" [ref=e493] [cursor=pointer]
+  - contentinfo [ref=e494]:
+    - generic [ref=e495]:
+      - generic [ref=e496]:
+        - generic [ref=e497]:
+          - link "Back to home" [ref=e498] [cursor=pointer]:
+            - /url: "#home"
+            - generic [ref=e499]: SB
+            - strong [ref=e500]: Waxan
+          - heading "Brammawaxanan Sivanantharajah" [level=2] [ref=e501]
+          - paragraph [ref=e502]: IT undergraduate building recruiter-ready projects across data, AI/ML, web development, and practical networking labs.
+          - generic [ref=e503]:
+            - link "GitHub" [ref=e504] [cursor=pointer]:
+              - /url: https://github.com/Brammawaxanan
+              - generic [ref=e505]: 
+            - link "WhatsApp" [ref=e506] [cursor=pointer]:
+              - /url: https://wa.me/94761764440
+              - generic [ref=e507]: 
+            - link "Facebook" [ref=e508] [cursor=pointer]:
+              - /url: https://web.facebook.com/Brammawaxanan
+              - generic [ref=e509]: 
+            - link "Instagram" [ref=e510] [cursor=pointer]:
+              - /url: https://www.instagram.com/sb_waxan_14/
+              - generic [ref=e511]: 
+            - link "LinkedIn" [ref=e512] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/brammawaxanan14/
+              - generic [ref=e513]: 
+        - navigation "Footer navigation" [ref=e514]:
+          - heading "Explore" [level=3] [ref=e515]
+          - list [ref=e516]:
+            - listitem [ref=e517]:
+              - link "About" [ref=e518] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e519]:
+              - link "Skills" [ref=e520] [cursor=pointer]:
+                - /url: "#skills"
+            - listitem [ref=e521]:
+              - link "Projects" [ref=e522] [cursor=pointer]:
+                - /url: "#projects"
+            - listitem [ref=e523]:
+              - link "Certificates" [ref=e524] [cursor=pointer]:
+                - /url: "#certificates"
+            - listitem [ref=e525]:
+              - link "Contact" [ref=e526] [cursor=pointer]:
+                - /url: "#contact"
+        - generic [ref=e527]:
+          - heading "Focus" [level=3] [ref=e528]
+          - list [ref=e529]:
+            - listitem [ref=e530]: Data Science
+            - listitem [ref=e531]: AI / Machine Learning
+            - listitem [ref=e532]: Web Development
+            - listitem [ref=e533]: Networking Labs
+      - generic [ref=e534]:
+        - generic [ref=e535]: Copyright 2026 SB Waxan. All rights reserved.
+        - link "sbwaxan@gmail.com" [ref=e536] [cursor=pointer]:
+          - /url: mailto:sbwaxan@gmail.com
+  - link "Scroll to top":
+    - /url: "#home"
+    - generic: 

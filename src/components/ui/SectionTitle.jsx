@@ -39,15 +39,17 @@ function getRibbonGeometry(sectionId, headingElement) {
   };
 }
 
-export function SectionTitle({ title, subtitle }) {
+export function SectionTitle({ title, subtitle, activateOnView = false }) {
   const activeSection = useActiveSectionContext();
   const ribbonControls = useAnimation();
   const headingRef = useRef(null);
   const wasActiveRef = useRef(false);
   const [sectionId, setSectionId] = useState("");
+  const [isTitleInView, setIsTitleInView] = useState(false);
   const [ribbonGeometry, setRibbonGeometry] = useState({ left: 0, width: 0 });
   const shouldReduceMotion = useReducedMotion();
   const isActive = sectionId === activeSection;
+  const shouldShowRibbon = isActive || (activateOnView && isTitleInView);
 
   useEffect(() => {
     const parentSection = headingRef.current?.closest("section");
@@ -55,7 +57,7 @@ export function SectionTitle({ title, subtitle }) {
   }, []);
 
   useEffect(() => {
-    if (!isActive || !sectionId || !headingRef.current) return undefined;
+    if (!shouldShowRibbon || !sectionId || !headingRef.current) return undefined;
 
     let frameId = 0;
 
@@ -70,30 +72,52 @@ export function SectionTitle({ title, subtitle }) {
     };
 
     scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
 
     return () => {
       window.cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [isActive, sectionId]);
+  }, [shouldShowRibbon, sectionId]);
+
+  useEffect(() => {
+    if (!activateOnView || !headingRef.current) return undefined;
+
+    const heading = headingRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsTitleInView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "-12% 0px -46% 0px",
+        threshold: [0, 0.18, 0.36],
+      },
+    );
+
+    observer.observe(heading);
+
+    return () => observer.disconnect();
+  }, [activateOnView]);
 
   useEffect(() => {
     if (!sectionId || !headingRef.current) return;
 
     if (shouldReduceMotion) {
       ribbonControls.start({
-        opacity: isActive ? 1 : 0,
-        scaleX: isActive ? 1 : 0,
+        opacity: shouldShowRibbon ? 1 : 0,
+        scaleX: shouldShowRibbon ? 1 : 0,
       });
-      wasActiveRef.current = isActive;
+      wasActiveRef.current = shouldShowRibbon;
       return;
     }
 
     const geometry = getRibbonGeometry(sectionId, headingRef.current);
     setRibbonGeometry(geometry);
 
-    if (isActive) {
+    if (shouldShowRibbon) {
       ribbonControls.set({
         opacity: 0.98,
         x: 0,
@@ -128,11 +152,11 @@ export function SectionTitle({ title, subtitle }) {
       });
     }
 
-    wasActiveRef.current = isActive;
-  }, [isActive, ribbonControls, sectionId, shouldReduceMotion]);
+    wasActiveRef.current = shouldShowRibbon;
+  }, [ribbonControls, sectionId, shouldReduceMotion, shouldShowRibbon]);
 
   return (
-    <div className={`section-title ${isActive ? "is-active" : ""}`}>
+    <div className={`section-title ${shouldShowRibbon ? "is-active" : ""}`}>
       <div className="section-title-heading" ref={headingRef}>
         <motion.span
           className="section-title-ribbon"

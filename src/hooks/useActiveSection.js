@@ -88,6 +88,7 @@ export function useActiveSection(sectionIds) {
 
     sections.forEach((section) => observer.observe(section));
     scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
 
     return () => {
@@ -97,6 +98,7 @@ export function useActiveSection(sectionIds) {
 
       observer.disconnect();
       visibleSectionsRef.current.clear();
+      window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
   }, [sectionIds]);

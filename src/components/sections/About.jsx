@@ -5,16 +5,16 @@ import { ResumeDropdown } from "../ui/ResumeDropdown.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
 
 const infoCards = [
-  { icon: "bi-mortarboard", label: "Education", value: "BSc IT @ SLIIT" },
+  { icon: "bi-mortarboard", label: "Education", value: "BSc (Hons) IT - Data Science SLIIT | 3rd Year" },
   { icon: "bi-telephone", label: "Phone", value: "+94 76 176 4440" },
   { icon: "bi-envelope", label: "Email", value: "sbwaxan@gmail.com" },
-  { icon: "bi-geo-alt", label: "Location", value: "Trincomalee, Sri Lanka" },
+  { icon: "bi-geo-alt", label: "Location", value: "Colombo, Sri Lanka" },
 ];
 
 const points = [
-  "I have expertise in both front-end and back-end technologies such as HTML, CSS, JavaScript, PHP, and MySQL",
-  "Proficient in design tools like Figma and MockFlow for creating responsive, user-friendly web solutions",
-  "Constantly exploring new technologies and contributing to innovative web projects",
+  "Strong foundation in Data Analytics, including data cleaning, EDA, visualization, SQL queries, and dashboard development.",
+  "Building AI/ML skills using Python, Pandas, NumPy, Scikit-learn, Matplotlib, and machine learning model evaluation.",
+  "Learning Data Engineering concepts such as databases, APIs, ETL workflows, MongoDB, and backend integration.",
 ];
 
 export function About() {
@@ -41,18 +41,14 @@ export function About() {
                 <br />
                 Sivanantharajah
               </h3>
-              <p>Web Designer &amp; Developer</p>
+              <p>Data Science Undergraduate <br /> AI/ML &amp; Analytics Enthusiast</p>
             </div>
           </Reveal>
 
           <Reveal className="about-content" effect="slide-left" delay={90}>
-            <h3>Passionate AI &amp; Web Development Student</h3>
+            <h3>Aspiring Data Analyst &amp; AI/ML Developer</h3>
             <p>
-              I am a Web Designer &amp; Web Developer currently studying
-              Information Technology at SLIIT, specializing in Data Science.
-              Passionate about building innovative and functional web solutions,
-              I am always eager to expand my skills and collaborate on exciting
-              projects.
+              I am a 3rd-year Data Science undergraduate at SLIIT, passionate about Data Analytics, Artificial Intelligence, Machine Learning, and Data Engineering. I enjoy working with real-world datasets, cleaning and analyzing data, building predictive models, and creating dashboards that support better decision-making. I am continuously improving my skills in Python, SQL, Power BI, Machine Learning, and modern web technologies.
             </p>
 
             <div className="info-cards-grid">
