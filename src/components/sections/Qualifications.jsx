@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
 import { TimelineItem } from "../ui/TimelineItem.jsx";
@@ -43,6 +44,8 @@ const experienceItems = [
   },
 ];
 
+const tabIndicatorTransition = { type: "spring", stiffness: 420, damping: 34 };
+
 export function Qualifications() {
   const [activeTab, setActiveTab] = useState("education");
   const items = activeTab === "education" ? educationItems : experienceItems;
@@ -53,24 +56,45 @@ export function Qualifications() {
         <Reveal>
           <SectionTitle title="Qualification" subtitle="My personal journey" />
         </Reveal>
-        <Reveal className="qualification-tabs" delay={80}>
+        <Reveal
+          className="qualification-tabs"
+          delay={80}
+          role="tablist"
+          aria-label="Qualification timeline"
+        >
           <button
             className={activeTab === "education" ? "is-active" : ""}
             type="button"
-            aria-pressed={activeTab === "education"}
+            role="tab"
+            aria-selected={activeTab === "education"}
             onClick={() => setActiveTab("education")}
           >
+            {activeTab === "education" && (
+              <motion.span
+                className="qualification-tab-indicator"
+                layoutId="qualification-tab-indicator"
+                transition={tabIndicatorTransition}
+              />
+            )}
             <i className="bi bi-mortarboard" aria-hidden="true" />
-            Education
+            <span>Education</span>
           </button>
           <button
             className={activeTab === "work" ? "is-active" : ""}
             type="button"
-            aria-pressed={activeTab === "work"}
+            role="tab"
+            aria-selected={activeTab === "work"}
             onClick={() => setActiveTab("work")}
           >
+            {activeTab === "work" && (
+              <motion.span
+                className="qualification-tab-indicator"
+                layoutId="qualification-tab-indicator"
+                transition={tabIndicatorTransition}
+              />
+            )}
             <i className="bi bi-briefcase" aria-hidden="true" />
-            Work Experience
+            <span>Work Experience</span>
           </button>
         </Reveal>
         <div className="timeline-panel" key={activeTab}>

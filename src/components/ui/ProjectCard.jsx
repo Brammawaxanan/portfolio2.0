@@ -1,14 +1,32 @@
 export function ProjectCard({
   project,
+  variant = "carousel",
   position = "",
   onMouseEnter,
   onMouseLeave,
   onFocus,
   onBlur,
 }) {
+  const theme = project.theme ?? {};
+  const cardClassName = [
+    "project-card",
+    variant === "grid" ? "project-card-grid" : "",
+    position ? `project-card-${position}` : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const themeStyle = {
+    "--project-primary": theme.primary ?? "#2a51d2",
+    "--project-primary-rgb": theme.primaryRgb ?? "42 81 210",
+    "--project-secondary": theme.secondary ?? "#edf4ff",
+    "--project-accent": theme.accent ?? "#79a6ff",
+    "--project-wash": theme.wash ?? "#ffffff",
+  };
+
   return (
     <a
-      className={`project-card ${position ? `project-card-${position}` : ""}`}
+      className={cardClassName}
+      style={themeStyle}
       href={project.href}
       target="_blank"
       rel="noreferrer"
