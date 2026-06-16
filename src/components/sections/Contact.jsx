@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
+import { SocialLinks } from "../ui/SocialLinks.jsx";
 
 function resolveContactApiUrl() {
   const configuredUrl = import.meta.env.VITE_CONTACT_API_URL?.trim();
@@ -95,6 +96,7 @@ export function Contact() {
                 <p>sbwaxan@gmail.com</p>
               </div>
             </article>
+            <SocialLinks />
           </Reveal>
 
           <Reveal

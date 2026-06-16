@@ -8,6 +8,7 @@ const certificates = [
     title: "Frontend Developer Internship",
     organization: "GAOTek Inc",
     year: "2025",
+    href: "https://drive.google.com/drive/folders/1dK7n28C83DWQZjL3V-PaViJczDIBs1j7?usp=drive_link",
     description:
       "Completed professional frontend development internship focusing on React.js, Tailwind CSS, and modern UI/UX design principles.",
   },
@@ -16,6 +17,7 @@ const certificates = [
     title: "Advanced Certificate in English",
     organization: "GANZ Academy",
     year: "2022",
+    href: "#qualifications",
     description:
       "Comprehensive English language certification focusing on communication skills, fluency, pronunciation, and written expression.",
   },
@@ -24,6 +26,7 @@ const certificates = [
     title: "BSc Information Technology",
     organization: "SLIIT",
     year: "2023 - 2027",
+    href: "#qualifications",
     description:
       "Pursuing degree with specialization in Data Science, focusing on programming, web design, and systems architecture.",
   },
@@ -32,6 +35,7 @@ const certificates = [
     title: "Web Design Excellence",
     organization: "Self-Certified Achievement",
     year: "2024",
+    href: "#projects",
     description:
       "Demonstrated expertise in responsive design, UI/UX principles, and modern web technologies through portfolio projects.",
   },
@@ -40,6 +44,7 @@ const certificates = [
     title: "Full Stack Development",
     organization: "Self-Certified Achievement",
     year: "2024",
+    href: "#projects",
     description:
       "Proficiency in both frontend and backend technologies including HTML, CSS, JavaScript, PHP, Java, and MySQL.",
   },
@@ -48,6 +53,7 @@ const certificates = [
     title: "Design Tools Mastery",
     organization: "Self-Certified Achievement",
     year: "2024",
+    href: "#skills",
     description:
       "Expert proficiency in design tools including Figma, Canva, DaVinci Resolve, and MockFlow for creating engaging visuals.",
   },

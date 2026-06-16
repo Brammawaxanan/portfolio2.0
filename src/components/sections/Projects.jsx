@@ -91,6 +91,23 @@ const projects = [
     },
   },
   {
+  id: "skypass-flight-booking-app",
+  title: "SkyPass Android Flight Booking App",
+  tech: "Kotlin • XML • Material UI • ConstraintLayout",
+  description:
+    "A modern Android flight-booking app with a complete booking flow from login and flight search to passenger details and boarding pass confirmation. Built with Kotlin and XML layouts, featuring a clean aviation-themed UI, smooth transitions, and card-based mobile app design.",
+  image: "/img/projects/skypass-poster.png",
+  alt: "SkyPass Android Flight Booking App",
+  href: "YOUR_PROJECT_LINK_HERE",
+  theme: {
+    primary: "#0077ff",
+    primaryRgb: "0 119 255",
+    secondary: "#e9fbff",
+    accent: "#12c7d8",
+    wash: "#f5fdff",
+  },
+  },
+  {
     id: "iris-svm-classification-featured",
     title: "Iris Flower Species Classification",
     tech: "Python • Scikit-learn • SVM",
