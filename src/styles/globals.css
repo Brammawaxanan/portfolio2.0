@@ -1416,6 +1416,123 @@ button {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1rem, 2.2vw, 1.45rem);
+  align-items: stretch;
+}
+
+.projects-grid-view {
+  display: grid;
+  gap: clamp(1.1rem, 2.4vw, 1.6rem);
+}
+
+.project-filter-bar {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 0 auto 0.2rem;
+  padding: 0.3rem 0.15rem 0.55rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 34%, transparent) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.project-filter-bar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.project-filter-bar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+.project-filter-bar button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0.62rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 7%, transparent);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.project-filter-bar button:hover,
+.project-filter-bar button:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+  color: var(--heading);
+  background: color-mix(in srgb, var(--accent-soft) 42%, var(--surface));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-2px);
+}
+
+.project-filter-bar button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 24%, transparent);
+  outline-offset: 3px;
+}
+
+.project-filter-bar button > span:not(.project-filter-indicator) {
+  position: relative;
+  z-index: 1;
+}
+
+.project-filter-count {
+  display: inline-grid;
+  min-width: 1.55rem;
+  height: 1.55rem;
+  place-items: center;
+  padding: 0 0.38rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent) inset;
+}
+
+.project-filter-bar button.is-active {
+  border-color: transparent;
+  color: #fff;
+}
+
+.project-filter-bar button.is-active .project-filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22) inset;
+}
+
+.project-filter-indicator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #1d3996 0%, #2a66dc 52%, #79a6ff 100%);
+  box-shadow:
+    0 16px 32px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 1px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.project-grid-item {
+  display: flex;
+  min-width: 0;
 }
 
 .project-card-grid {
@@ -1423,8 +1540,8 @@ button {
   top: auto;
   left: auto;
   width: 100%;
-  min-height: 100%;
-  height: auto;
+  min-height: 540px;
+  height: 100%;
   transform: translateY(0) scale(1);
   opacity: 1;
   filter: none;
@@ -1454,12 +1571,80 @@ button {
 
 .project-card-grid .project-description {
   align-self: start;
-  display: block;
-  overflow: visible;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
 }
 
 .project-card-grid .project-btn {
   align-self: end;
+}
+
+.projects-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.35rem;
+}
+
+.projects-more-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 90%, transparent), color-mix(in srgb, var(--surface-strong) 82%, transparent));
+  color: var(--heading);
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow:
+    0 16px 38px color-mix(in srgb, var(--accent) 11%, transparent),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projects-more-button i {
+  transition: transform 180ms ease;
+}
+
+.projects-more-button:hover,
+.projects-more-button:focus-visible {
+  border-color: transparent;
+  background: linear-gradient(135deg, #1d3996 0%, #2a66dc 52%, #79a6ff 100%);
+  color: #fff;
+  box-shadow: 0 20px 44px color-mix(in srgb, var(--accent) 24%, transparent);
+  transform: translateY(-3px);
+}
+
+.projects-more-button:hover i,
+.projects-more-button:focus-visible i {
+  transform: translateY(2px);
+}
+
+.projects-more-button[aria-expanded="true"]:hover i,
+.projects-more-button[aria-expanded="true"]:focus-visible i {
+  transform: translateY(-2px);
+}
+
+.project-empty-state {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--accent-soft) 38%, transparent);
+  color: var(--muted);
+  text-align: center;
+  font-weight: 750;
 }
 
 .project-image-wrapper {
@@ -2282,6 +2467,12 @@ button {
   }
 }
 
+@media (min-width: 860px) {
+  .project-filter-bar {
+    justify-content: center;
+  }
+}
+
 @media (min-width: 1120px) {
   .skills-grid,
   .skills-extra-grid,
@@ -2335,8 +2526,21 @@ button {
   }
 
   .project-card-grid {
-    height: auto;
-    min-height: 100%;
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+  }
+
+  .project-card-grid .project-image-wrapper,
+  .project-card-grid .project-image {
+    height: 185px;
+    min-height: 185px;
+    flex-basis: 185px;
+  }
+
+  .project-filter-bar {
+    margin-inline: -0.35rem;
+    padding-inline: 0.35rem;
   }
 
   .project-card-grid .project-image-wrapper {

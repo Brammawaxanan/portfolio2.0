@@ -4,10 +4,21 @@ import { Reveal } from "../ui/Reveal.jsx";
 import { SectionTitle } from "../ui/SectionTitle.jsx";
 import { ProjectCard } from "../ui/ProjectCard.jsx";
 
+const INITIAL_PROJECT_COUNT = 3;
+
+const projectCategories = [
+  "Data Analyse",
+  "AIML",
+  "Web Application",
+  "Mobile App",
+  "Data Engineering",
+];
+
 const projects = [
   {
     id: "kids-world-store",
     title: "Kid's World Online shopping store",
+    category: "Web Application",
     tech: "Java MVC Architecture",
     description:
       "An online dress store for children offering a seamless platform for browsing, ordering, and managing kids' clothing with a user-friendly interface for parents to shop.",
@@ -25,6 +36,7 @@ const projects = [
   {
     id: "carenet-featured",
     title: "CareNet – In-Home Care Service Management Platform",
+    category: "Web Application",
     tech: "React.js • Spring Boot • MySQL",
     description:
       "A full-stack caregiver service management platform that connects clients with caregivers and provides admin task management, assignment tracking, proof verification, billing overview, and dashboard analytics.",
@@ -42,6 +54,7 @@ const projects = [
   {
     id: "online-job-portal",
     title: "Online Job Portal",
+    category: "Web Application",
     tech: "PHP Backend",
     description:
       "Hire Hub is a comprehensive job portal connecting employers with job seekers through an intuitive platform for posting opportunities, applying for roles, and managing profiles.",
@@ -59,6 +72,7 @@ const projects = [
   {
     id: "edutrack-smart-campus-featured",
     title: "EduTrack – Smart Campus Operations Hub",
+    category: "Web Application",
     tech: "Spring Boot • React • MySQL • Java ML",
     description:
       "A group full-stack smart campus platform for managing campus resources, bookings, incidents, role-based dashboards, notifications, and admin workflows. My main contribution was developing the ticket management module for handling student requests, status updates, and resolution tracking.",
@@ -76,6 +90,7 @@ const projects = [
   {
     id: "dwbi-ecommerce-analytics-featured",
     title: "E-Commerce DWBI Analytics Project",
+    category: "Data Analyse",
     tech: "SSAS • Power BI • OLAP • Data Warehouse",
     description:
       "A data warehousing and business intelligence project built using an e-commerce transactional dataset. The project includes SSAS cube implementation, dimension and measure configuration, OLAP operations such as roll-up, drill-down, slice, dice, and pivot, and interactive Power BI reports for analyzing sales performance, product categories, customer locations, and payment trends.",
@@ -91,25 +106,27 @@ const projects = [
     },
   },
   {
-  id: "skypass-flight-booking-app",
-  title: "SkyPass Android Flight Booking App",
-  tech: "Kotlin • XML • Material UI • ConstraintLayout",
-  description:
-    "A modern Android flight-booking app with a complete booking flow from login and flight search to passenger details and boarding pass confirmation. Built with Kotlin and XML layouts, featuring a clean aviation-themed UI, smooth transitions, and card-based mobile app design.",
-  image: "/img/projects/skypass-poster.png",
-  alt: "SkyPass Android Flight Booking App",
-  href: "YOUR_PROJECT_LINK_HERE",
-  theme: {
-    primary: "#0077ff",
-    primaryRgb: "0 119 255",
-    secondary: "#e9fbff",
-    accent: "#12c7d8",
-    wash: "#f5fdff",
-  },
+    id: "skypass-flight-booking-app",
+    title: "SkyPass Android Flight Booking App",
+    category: "Mobile App",
+    tech: "Kotlin • XML • Material UI • ConstraintLayout",
+    description:
+      "A modern Android flight-booking app with a complete booking flow from login and flight search to passenger details and boarding pass confirmation. Built with Kotlin and XML layouts, featuring a clean aviation-themed UI, smooth transitions, and card-based mobile app design.",
+    image: "/img/projects/skypass-poster.png",
+    alt: "SkyPass Android Flight Booking App",
+    href: "YOUR_PROJECT_LINK_HERE",
+    theme: {
+      primary: "#0077ff",
+      primaryRgb: "0 119 255",
+      secondary: "#e9fbff",
+      accent: "#12c7d8",
+      wash: "#f5fdff",
+    },
   },
   {
     id: "iris-svm-classification-featured",
     title: "Iris Flower Species Classification",
+    category: "Data Analyse",
     tech: "Python • Scikit-learn • SVM",
     description:
       "A beginner-friendly machine learning classification project that uses the Iris dataset to predict flower species based on sepal and petal measurements. The project includes EDA, correlation analysis, feature scaling, SVM model training, evaluation, and model saving.",
@@ -151,6 +168,32 @@ const viewVariants = {
 
 const indicatorTransition = { type: "spring", stiffness: 420, damping: 34 };
 const viewTransition = { duration: 0.32, ease: [0.22, 1, 0.36, 1] };
+
+const gridContainerVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.055,
+    },
+  },
+};
+
+const gridCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+    filter: "blur(5px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  },
+  exit: {
+    opacity: 0,
+    y: -14,
+    filter: "blur(4px)",
+  },
+};
 
 function ProjectViewToggle({ activeView, onChange }) {
   return (
@@ -323,11 +366,123 @@ function ProjectsCarousel({ projects }) {
 }
 
 function ProjectsGrid({ projects }) {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const categoryCounts = projectCategories.reduce(
+    (counts, category) => ({
+      ...counts,
+      [category]: projects.filter((project) => project.category === category).length,
+    }),
+    { All: projects.length },
+  );
+  const filterOptions = [
+    "All",
+    ...projectCategories
+      .slice()
+      .sort((firstCategory, secondCategory) => {
+        const countDifference = categoryCounts[secondCategory] - categoryCounts[firstCategory];
+
+        if (countDifference !== 0) return countDifference;
+
+        return firstCategory.localeCompare(secondCategory);
+      }),
+  ];
+
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
+
+  const visibleProjects = showAllProjects
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_PROJECT_COUNT);
+
+  const hasHiddenProjects = filteredProjects.length > INITIAL_PROJECT_COUNT;
+
+  function handleCategoryChange(category) {
+    setSelectedCategory(category);
+    setShowAllProjects(false);
+  }
+
   return (
-    <div className="projects-grid" aria-label="All projects">
-      {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} variant="grid" />
-      ))}
+    <div className="projects-grid-view">
+      <div className="project-filter-bar" role="tablist" aria-label="Filter projects by category">
+        {filterOptions.map((category) => {
+          const isActive = selectedCategory === category;
+
+          return (
+            <button
+              key={category}
+              className={isActive ? "is-active" : ""}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => handleCategoryChange(category)}
+            >
+              {isActive && (
+                <motion.span
+                  className="project-filter-indicator"
+                  layoutId="project-filter-indicator"
+                  transition={indicatorTransition}
+                />
+              )}
+              <span>{category}</span>
+              <span className="project-filter-count">{categoryCounts[category]}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <motion.div
+        key={selectedCategory}
+        className="projects-grid"
+        aria-label={`${selectedCategory} projects`}
+        variants={gridContainerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <AnimatePresence mode="popLayout" initial={false}>
+          {visibleProjects.map((project, index) => (
+            <motion.div
+              className="project-grid-item"
+              key={project.id}
+              layout
+              variants={gridCardVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.28, delay: Math.min(index * 0.035, 0.18), ease: [0.22, 1, 0.36, 1] }}
+            >
+              <ProjectCard project={project} variant="grid" />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {filteredProjects.length === 0 && (
+        <motion.p
+          className="project-empty-state"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.24, ease: "easeOut" }}
+        >
+          More projects for this category are coming soon.
+        </motion.p>
+      )}
+
+      {hasHiddenProjects && (
+        <div className="projects-more-wrap">
+          <button
+            className="projects-more-button"
+            type="button"
+            aria-expanded={showAllProjects}
+            onClick={() => setShowAllProjects((current) => !current)}
+          >
+            <span>{showAllProjects ? "Show Less" : "See More"}</span>
+            <i className={`bi ${showAllProjects ? "bi-chevron-up" : "bi-chevron-down"}`} aria-hidden="true" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
